@@ -279,6 +279,68 @@ export default function BusinessPlanPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Custom slider styles */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+          }
+          input[type="range"]::-webkit-slider-track {
+            background: currentColor;
+            height: 8px;
+            border-radius: 4px;
+          }
+          input[type="range"]::-moz-range-track {
+            background: currentColor;
+            height: 8px;
+            border-radius: 4px;
+            border: none;
+          }
+          input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2px solid currentColor;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+          }
+          input[type="range"]::-moz-range-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2px solid currentColor;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+          }
+          input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          }
+          input[type="range"]::-moz-range-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          }
+          input[type="range"]:focus {
+            outline: none;
+          }
+          input[type="range"]:focus::-webkit-slider-thumb {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+          }
+          input[type="range"]:focus::-moz-range-thumb {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+          }
+        `
+      }} />
+
       {/* Navigation */}
       <nav className="bg-white shadow-lg fixed w-full top-0 z-50">
         <div className="container-max section-padding">
@@ -1223,912 +1285,528 @@ export default function BusinessPlanPage() {
       {/* Financial Model */}
       <section className="py-20 bg-gray-50">
         <div className="container-max section-padding">
-          <div className="grid lg:grid-cols-3 gap-8">
-            
-            {/* Equipment & Infrastructure */}
-            <div className="space-y-6">
-              {/* Major Equipment */}
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h2 className="text-xl font-bold text-dark-900 mb-6 flex items-center">
-                  <Wrench className="h-6 w-6 text-blue-600 mr-3" />
-                  Major Equipment
-                </h2>
+          <h2 className="text-3xl font-bold text-dark-900 text-center mb-12">Interactive Financial Model</h2>
+          
+          {/* Model Controls */}
+          <div className="max-w-7xl mx-auto mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <div className="grid lg:grid-cols-3 gap-8">
                 
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      5-Axis CNC Machine: {formatCurrency(cncMachine * 1000)}
-                    </label>
-                    <input
-                      type="range"
-                      min="800"
-                      max="2500"
-                      step="50"
-                      value={cncMachine}
-                      onChange={(e) => setCncMachine(Number(e.target.value))}
-                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                    />
-                    <div className="flex justify-between text-xs text-dark-500 mt-1">
-                      <span>$800K</span>
-                      <span>$2.5M</span>
-                    </div>
+                {/* Equipment & Infrastructure */}
+                <div className="space-y-6">
+                  <div className="border-b border-gray-200 pb-4">
+                    <h3 className="text-xl font-bold text-dark-900 flex items-center">
+                      <Wrench className="h-6 w-6 text-blue-600 mr-3" />
+                      Equipment & Infrastructure
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-2">Core manufacturing and testing capabilities</p>
                   </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Metal 3D Printer (EOS/SLM): {formatCurrency(metalPrinter * 1000)}
-                    </label>
-                    <input
-                      type="range"
-                      min="1500"
-                      max="4000"
-                      step="100"
-                      value={metalPrinter}
-                      onChange={(e) => setMetalPrinter(Number(e.target.value))}
-                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      GPU Cluster (8-16 A100s): {formatCurrency(gpuCluster * 1000)}
-                    </label>
-                    <input
-                      type="range"
-                      min="200"
-                      max="800"
-                      step="25"
-                      value={gpuCluster}
-                      onChange={(e) => setGpuCluster(Number(e.target.value))}
-                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Test Equipment */}
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-lg font-bold text-dark-900 mb-4 flex items-center">
-                  <Camera className="h-5 w-5 text-red-600 mr-2" />
-                  Test Equipment
-                </h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      High-Speed Cameras: {highSpeedCameras} × {formatCurrency(highSpeedCameraCost * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="1"
-                        max="6"
-                        step="1"
-                        value={highSpeedCameras}
-                        onChange={(e) => setHighSpeedCameras(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="75"
-                        max="200"
-                        step="5"
-                        value={highSpeedCameraCost}
-                        onChange={(e) => setHighSpeedCameraCost(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                    <div className="text-xs text-dark-500 mt-1">
-                      Total: {formatCurrency(highSpeedCameras * highSpeedCameraCost * 1000)}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Data Acquisition Systems: {dataAcqSystems} × {formatCurrency(dataAcqSystemCost * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="2"
-                        max="8"
-                        step="1"
-                        value={dataAcqSystems}
-                        onChange={(e) => setDataAcqSystems(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="25"
-                        max="75"
-                        step="5"
-                        value={dataAcqSystemCost}
-                        onChange={(e) => setDataAcqSystemCost(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                    <div className="text-xs text-dark-500 mt-1">
-                      Total: {formatCurrency(dataAcqSystems * dataAcqSystemCost * 1000)}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Accelerometers/Sensors: {accelerometers} × {formatCurrency(accelerometerCost * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="6"
-                        max="24"
-                        step="2"
-                        value={accelerometers}
-                        onChange={(e) => setAccelerometers(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="3"
-                        max="15"
-                        step="1"
-                        value={accelerometerCost}
-                        onChange={(e) => setAccelerometerCost(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                    <div className="text-xs text-dark-500 mt-1">
-                      Total: {formatCurrency(accelerometers * accelerometerCost * 1000)}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Environmental Chambers: {envChambers} × {formatCurrency(envChamberCost * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="1"
-                        max="3"
-                        step="1"
-                        value={envChambers}
-                        onChange={(e) => setEnvChambers(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="120"
-                        max="300"
-                        step="10"
-                        value={envChamberCost}
-                        onChange={(e) => setEnvChamberCost(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                    <div className="text-xs text-dark-500 mt-1">
-                      Total: {formatCurrency(envChambers * envChamberCost * 1000)}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Oscilloscopes: {oscilloscopes} × {formatCurrency(oscilloscopeCost * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="2"
-                        max="8"
-                        step="1"
-                        value={oscilloscopes}
-                        onChange={(e) => setOscilloscopes(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="15"
-                        max="50"
-                        step="2"
-                        value={oscilloscopeCost}
-                        onChange={(e) => setOscilloscopeCost(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                    <div className="text-xs text-dark-500 mt-1">
-                      Total: {formatCurrency(oscilloscopes * oscilloscopeCost * 1000)}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Test Fixtures: {testFixtures} × {formatCurrency(testFixtureCost * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="4"
-                        max="16"
-                        step="2"
-                        value={testFixtures}
-                        onChange={(e) => setTestFixtures(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="8"
-                        max="30"
-                        step="2"
-                        value={testFixtureCost}
-                        onChange={(e) => setTestFixtureCost(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                    <div className="text-xs text-dark-500 mt-1">
-                      Total: {formatCurrency(testFixtures * testFixtureCost * 1000)}
-                    </div>
-                  </div>
-
-                  <div className="border-t pt-2 mt-4">
-                    <div className="flex justify-between font-bold text-red-800">
-                      <span>Test Equipment Total:</span>
-                      <span>{formatCurrency(projections.testEquipmentCosts)}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Lab Equipment */}
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-lg font-bold text-dark-900 mb-4 flex items-center">
-                  <Microscope className="h-5 w-5 text-purple-600 mr-2" />
-                  Lab Equipment
-                </h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Engineering Workstations: {workstations} × {formatCurrency(workstationCost * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="6"
-                        max="20"
-                        step="2"
-                        value={workstations}
-                        onChange={(e) => setWorkstations(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="5"
-                        max="15"
-                        step="1"
-                        value={workstationCost}
-                        onChange={(e) => setWorkstationCost(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                    <div className="text-xs text-dark-500 mt-1">
-                      Total: {formatCurrency(workstations * workstationCost * 1000)}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Precision Tool Sets: {precisionTools} × {formatCurrency(precisionToolCost * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="1"
-                        max="3"
-                        step="1"
-                        value={precisionTools}
-                        onChange={(e) => setPrecisionTools(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="25"
-                        max="75"
-                        step="5"
-                        value={precisionToolCost}
-                        onChange={(e) => setPrecisionToolCost(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                    <div className="text-xs text-dark-500 mt-1">
-                      Total: {formatCurrency(precisionTools * precisionToolCost * 1000)}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Safety Equipment: {safetyEquipment} × {formatCurrency(safetyEquipmentCost * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="1"
-                        max="2"
-                        step="1"
-                        value={safetyEquipment}
-                        onChange={(e) => setSafetyEquipment(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="15"
-                        max="50"
-                        step="5"
-                        value={safetyEquipmentCost}
-                        onChange={(e) => setSafetyEquipmentCost(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                    <div className="text-xs text-dark-500 mt-1">
-                      Total: {formatCurrency(safetyEquipment * safetyEquipmentCost * 1000)}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      CMM (Coordinate Measuring): {cmms} × {formatCurrency(cmmCost * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="1"
-                        max="3"
-                        step="1"
-                        value={cmms}
-                        onChange={(e) => setCmms(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="100"
-                        max="300"
-                        step="10"
-                        value={cmmCost}
-                        onChange={(e) => setCmmCost(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                    <div className="text-xs text-dark-500 mt-1">
-                      Total: {formatCurrency(cmms * cmmCost * 1000)}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Lab Benches: {labBenches} × {formatCurrency(labBenchCost * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="4"
-                        max="16"
-                        step="2"
-                        value={labBenches}
-                        onChange={(e) => setLabBenches(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="3"
-                        max="12"
-                        step="1"
-                        value={labBenchCost}
-                        onChange={(e) => setLabBenchCost(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                    <div className="text-xs text-dark-500 mt-1">
-                      Total: {formatCurrency(labBenches * labBenchCost * 1000)}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Storage Systems: {formatCurrency(storageSystemsCost * 1000)}
-                    </label>
-                    <input
-                      type="range"
-                      min="20"
-                      max="75"
-                      step="5"
-                      value={storageSystemsCost}
-                      onChange={(e) => setStorageSystemsCost(Number(e.target.value))}
-                      className="w-full slider"
-                    />
-                  </div>
-
-                  <div className="border-t pt-2 mt-4">
-                    <div className="flex justify-between font-bold text-purple-800">
-                      <span>Lab Equipment Total:</span>
-                      <span>{formatCurrency(projections.labEquipmentCosts)}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Software Licenses */}
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-lg font-bold text-dark-900 mb-4 flex items-center">
-                  <Cpu className="h-5 w-5 text-green-600 mr-2" />
-                  Annual Software Costs
-                </h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      ABAQUS Seats: {abaqusSeats} @ {formatCurrency(abaqusCostPerSeat * 1000)}/year
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="2"
-                        max="12"
-                        step="1"
-                        value={abaqusSeats}
-                        onChange={(e) => setAbaqusSeats(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="35"
-                        max="60"
-                        step="2"
-                        value={abaqusCostPerSeat}
-                        onChange={(e) => setAbaqusCostPerSeat(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      MATLAB/Simulink: {matlabSeats} seats @ {formatCurrency(matlabCostPerSeat * 1000)}/year
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="3"
-                        max="15"
-                        step="1"
-                        value={matlabSeats}
-                        onChange={(e) => setMatlabSeats(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="5"
-                        max="15"
-                        step="1"
-                        value={matlabCostPerSeat}
-                        onChange={(e) => setMatlabCostPerSeat(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      CAD Software: {cadSeats} seats @ {formatCurrency(cadCostPerSeat * 1000)}/year
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="4"
-                        max="20"
-                        step="1"
-                        value={cadSeats}
-                        onChange={(e) => setCadSeats(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="8"
-                        max="20"
-                        step="1"
-                        value={cadCostPerSeat}
-                        onChange={(e) => setCadCostPerSeat(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Cloud Computing: {formatCurrency(cloudCompute * 1000)}/year
-                    </label>
-                    <input
-                      type="range"
-                      min="30"
-                      max="150"
-                      step="10"
-                      value={cloudCompute}
-                      onChange={(e) => setCloudCompute(Number(e.target.value))}
-                      className="w-full slider"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Facility & Staffing */}
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-lg font-bold text-dark-900 mb-4 flex items-center">
-                  <Building className="h-5 w-5 text-purple-600 mr-2" />
-                  Facility (Northern NJ)
-                </h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Facility Size: {facilitySize.toLocaleString()} sq ft
-                    </label>
-                    <input
-                      type="range"
-                      min="8000"
-                      max="30000"
-                      step="1000"
-                      value={facilitySize}
-                      onChange={(e) => setFacilitySize(Number(e.target.value))}
-                      className="w-full slider"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Lease Rate: ${leaseRate}/sq ft/year
-                    </label>
-                    <input
-                      type="range"
-                      min="8"
-                      max="18"
-                      step="0.5"
-                      value={leaseRate}
-                      onChange={(e) => setLeaseRate(Number(e.target.value))}
-                      className="w-full slider"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-2">
-                    <div>
-                      <label className="block text-xs font-semibold text-dark-700 mb-1">
-                        Utilities: ${utilityRate}/sq ft
-                      </label>
-                      <input
-                        type="range"
-                        min="5"
-                        max="12"
-                        step="0.5"
-                        value={utilityRate}
-                        onChange={(e) => setUtilityRate(Number(e.target.value))}
-                        className="w-full slider"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-dark-700 mb-1">
-                        Insurance: ${insuranceRate}/sq ft
-                      </label>
-                      <input
-                        type="range"
-                        min="1.5"
-                        max="4"
-                        step="0.25"
-                        value={insuranceRate}
-                        onChange={(e) => setInsuranceRate(Number(e.target.value))}
-                        className="w-full slider"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Staffing */}
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-lg font-bold text-dark-900 mb-4 flex items-center">
-                  <Users className="h-5 w-5 text-orange-600 mr-2" />
-                  Staffing (with benefits)
-                </h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Senior Engineers: {seniorEngineers} @ {formatCurrency(seniorEngineerSalary * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="2"
-                        max="10"
-                        step="1"
-                        value={seniorEngineers}
-                        onChange={(e) => setSeniorEngineers(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="140"
-                        max="200"
-                        step="5"
-                        value={seniorEngineerSalary}
-                        onChange={(e) => setSeniorEngineerSalary(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Mid Engineers: {midEngineers} @ {formatCurrency(midEngineerSalary * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="2"
-                        max="15"
-                        step="1"
-                        value={midEngineers}
-                        onChange={(e) => setMidEngineers(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="110"
-                        max="160"
-                        step="5"
-                        value={midEngineerSalary}
-                        onChange={(e) => setMidEngineerSalary(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Technicians: {technicians} @ {formatCurrency(technicianSalary * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="2"
-                        max="12"
-                        step="1"
-                        value={technicians}
-                        onChange={(e) => setTechnicians(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="70"
-                        max="110"
-                        step="5"
-                        value={technicianSalary}
-                        onChange={(e) => setTechnicianSalary(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Business Staff: {businessStaff} @ {formatCurrency(businessStaffSalary * 1000)}
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <input
-                        type="range"
-                        min="1"
-                        max="8"
-                        step="1"
-                        value={businessStaff}
-                        onChange={(e) => setBusinessStaff(Number(e.target.value))}
-                        className="slider"
-                      />
-                      <input
-                        type="range"
-                        min="95"
-                        max="160"
-                        step="5"
-                        value={businessStaffSalary}
-                        onChange={(e) => setBusinessStaffSalary(Number(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Business Model & Financing */}
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-lg font-bold text-dark-900 mb-4 flex items-center">
-                  <DollarSign className="h-5 w-5 text-green-600 mr-2" />
-                  Revenue Model
-                </h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Avg Contract Size: {formatCurrency(avgContractSize * 1000)}
-                    </label>
-                    <input
-                      type="range"
-                      min="300"
-                      max="2000"
-                      step="50"
-                      value={avgContractSize}
-                      onChange={(e) => setAvgContractSize(Number(e.target.value))}
-                      className="w-full slider"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Contracts Year 1: {contractsYear1}
-                    </label>
-                    <input
-                      type="range"
-                      min="1"
-                      max="8"
-                      step="1"
-                      value={contractsYear1}
-                      onChange={(e) => setContractsYear1(Number(e.target.value))}
-                      className="w-full slider"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Contract Growth Rate: {formatPercentage(contractGrowthRate)}
-                    </label>
-                    <input
-                      type="range"
-                      min="25"
-                      max="150"
-                      step="5"
-                      value={contractGrowthRate}
-                      onChange={(e) => setContractGrowthRate(Number(e.target.value))}
-                      className="w-full slider"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Utilization Rate: {formatPercentage(utilization)}
-                    </label>
-                    <input
-                      type="range"
-                      min="50"
-                      max="85"
-                      step="2"
-                      value={utilization}
-                      onChange={(e) => setUtilization(Number(e.target.value))}
-                      className="w-full slider"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Billable Rate: ${billableRate}/hour
-                    </label>
-                    <input
-                      type="range"
-                      min="175"
-                      max="350"
-                      step="10"
-                      value={billableRate}
-                      onChange={(e) => setBillableRate(Number(e.target.value))}
-                      className="w-full slider"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Financing Model */}
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-lg font-bold text-dark-900 mb-4 flex items-center">
-                  <CreditCard className="h-5 w-5 text-indigo-600 mr-2" />
-                  Financing Model
-                </h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-dark-700 mb-2">
-                      Financing Type
-                    </label>
-                    <select
-                      value={financingModel}
-                      onChange={(e) => setFinancingModel(e.target.value)}
-                      className="w-full p-2 border border-gray-300 rounded"
-                    >
-                      <option value="cash">All Cash</option>
-                      <option value="loan">Equipment Loan</option>
-                      <option value="equity">Equity Investment</option>
-                      <option value="mixed">Mixed (Debt + Equity)</option>
-                    </select>
-                  </div>
-
-                  {(financingModel === 'loan' || financingModel === 'mixed') && (
-                    <>
+                  
+                  {/* Major Equipment */}
+                  <div className="bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition-all duration-300 border border-blue-200 hover:shadow-lg">
+                    <h4 className="font-bold text-blue-900 mb-4">Major Equipment</h4>
+                    <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-semibold text-dark-700 mb-2">
-                          Loan Interest Rate: {formatPercentage(loanInterestRate)}
-                        </label>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">5-Axis CNC Machine</label>
+                          <span className="text-sm font-bold text-blue-800 bg-blue-200 px-2 py-1 rounded transition-all duration-200 hover:bg-blue-300">{formatCurrency(cncMachine * 1000)}</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="800"
+                          max="2500"
+                          step="50"
+                          value={cncMachine}
+                          onChange={(e) => setCncMachine(Number(e.target.value))}
+                          className="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer text-blue-600"
+                        />
+                        <div className="flex justify-between text-xs text-gray-500 mt-1">
+                          <span>$800K</span>
+                          <span>$2.5M</span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Metal 3D Printer</label>
+                          <span className="text-sm font-bold text-blue-800 bg-blue-200 px-2 py-1 rounded transition-all duration-200 hover:bg-blue-300">{formatCurrency(metalPrinter * 1000)}</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="1500"
+                          max="4000"
+                          step="100"
+                          value={metalPrinter}
+                          onChange={(e) => setMetalPrinter(Number(e.target.value))}
+                          className="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer text-blue-600"
+                        />
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">GPU Cluster</label>
+                          <span className="text-sm font-bold text-blue-800 bg-blue-200 px-2 py-1 rounded transition-all duration-200 hover:bg-blue-300">{formatCurrency(gpuCluster * 1000)}</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="200"
+                          max="800"
+                          step="25"
+                          value={gpuCluster}
+                          onChange={(e) => setGpuCluster(Number(e.target.value))}
+                          className="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer text-blue-600"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Facility */}
+                  <div className="bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition-all duration-300 border border-purple-200 hover:shadow-lg">
+                    <h4 className="font-bold text-purple-900 mb-4">Facility (Northern NJ)</h4>
+                    <div className="space-y-4">
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Size</label>
+                          <span className="text-sm font-bold text-purple-800 bg-purple-200 px-2 py-1 rounded transition-all duration-200 hover:bg-purple-300">{facilitySize.toLocaleString()} sq ft</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="8000"
+                          max="30000"
+                          step="1000"
+                          value={facilitySize}
+                          onChange={(e) => setFacilitySize(Number(e.target.value))}
+                          className="w-full h-2 bg-purple-200 rounded-lg appearance-none cursor-pointer text-purple-600"
+                        />
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Lease Rate</label>
+                          <span className="text-sm font-bold text-purple-800 bg-purple-200 px-2 py-1 rounded transition-all duration-200 hover:bg-purple-300">${leaseRate}/sq ft/year</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="8"
+                          max="18"
+                          step="0.5"
+                          value={leaseRate}
+                          onChange={(e) => setLeaseRate(Number(e.target.value))}
+                          className="w-full h-2 bg-purple-200 rounded-lg appearance-none cursor-pointer text-purple-600"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Test Equipment Summary */}
+                  <div className="bg-red-50 p-4 rounded-lg hover:bg-red-100 transition-all duration-300 border border-red-200 hover:shadow-lg">
+                    <h4 className="font-bold text-red-900 mb-3">Test Equipment</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span>High-Speed Cameras ({highSpeedCameras})</span>
+                        <span className="font-semibold bg-red-200 px-2 py-1 rounded text-xs transition-all duration-200 hover:bg-red-300">{formatCurrency(highSpeedCameras * highSpeedCameraCost * 1000)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Data Acquisition ({dataAcqSystems})</span>
+                        <span className="font-semibold bg-red-200 px-2 py-1 rounded text-xs transition-all duration-200 hover:bg-red-300">{formatCurrency(dataAcqSystems * dataAcqSystemCost * 1000)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Sensors & Equipment</span>
+                        <span className="font-semibold bg-red-200 px-2 py-1 rounded text-xs transition-all duration-200 hover:bg-red-300">{formatCurrency((accelerometers * accelerometerCost + envChambers * envChamberCost + oscilloscopes * oscilloscopeCost + testFixtures * testFixtureCost) * 1000)}</span>
+                      </div>
+                      <div className="border-t pt-2 flex justify-between font-bold">
+                        <span>Total Test Equipment</span>
+                        <span className="bg-red-300 px-2 py-1 rounded text-red-900">{formatCurrency(projections.testEquipmentCosts)}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Business Parameters */}
+                <div className="space-y-6">
+                  <div className="border-b border-gray-200 pb-4">
+                    <h3 className="text-xl font-bold text-dark-900 flex items-center">
+                      <DollarSign className="h-6 w-6 text-green-600 mr-3" />
+                      Business Model & Growth
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-2">Revenue streams and scaling parameters</p>
+                  </div>
+
+                  {/* Revenue Model */}
+                  <div className="bg-green-50 p-4 rounded-lg hover:bg-green-100 transition-all duration-300 border border-green-200 hover:shadow-lg">
+                    <h4 className="font-bold text-green-900 mb-4">Revenue Streams</h4>
+                    <div className="space-y-4">
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Avg Contract Size</label>
+                          <span className="text-sm font-bold text-green-800">{formatCurrency(avgContractSize * 1000)}</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="300"
+                          max="2000"
+                          step="50"
+                          value={avgContractSize}
+                          onChange={(e) => setAvgContractSize(Number(e.target.value))}
+                          className="w-full h-2 bg-green-200 rounded-lg appearance-none cursor-pointer"
+                        />
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Contracts Year 1</label>
+                          <span className="text-sm font-bold text-green-800">{contractsYear1}</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="1"
+                          max="8"
+                          step="1"
+                          value={contractsYear1}
+                          onChange={(e) => setContractsYear1(Number(e.target.value))}
+                          className="w-full h-2 bg-green-200 rounded-lg appearance-none cursor-pointer"
+                        />
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Contract Growth Rate</label>
+                          <span className="text-sm font-bold text-green-800">{formatPercentage(contractGrowthRate)}</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="25"
+                          max="150"
+                          step="5"
+                          value={contractGrowthRate}
+                          onChange={(e) => setContractGrowthRate(Number(e.target.value))}
+                          className="w-full h-2 bg-green-200 rounded-lg appearance-none cursor-pointer"
+                        />
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Billable Rate</label>
+                          <span className="text-sm font-bold text-green-800">${billableRate}/hour</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="175"
+                          max="350"
+                          step="10"
+                          value={billableRate}
+                          onChange={(e) => setBillableRate(Number(e.target.value))}
+                          className="w-full h-2 bg-green-200 rounded-lg appearance-none cursor-pointer"
+                        />
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Utilization Rate</label>
+                          <span className="text-sm font-bold text-green-800">{formatPercentage(utilization)}</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="50"
+                          max="85"
+                          step="2"
+                          value={utilization}
+                          onChange={(e) => setUtilization(Number(e.target.value))}
+                          className="w-full h-2 bg-green-200 rounded-lg appearance-none cursor-pointer"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Staffing */}
+                  <div className="bg-orange-50 p-4 rounded-lg">
+                    <h4 className="font-bold text-orange-900 mb-4">Team & Talent (NJ Rates)</h4>
+                    <div className="space-y-4">
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Senior Engineers</label>
+                          <span className="text-sm font-bold text-orange-800">{seniorEngineers} @ {formatCurrency(seniorEngineerSalary * 1000)}</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          <input
+                            type="range"
+                            min="2"
+                            max="10"
+                            step="1"
+                            value={seniorEngineers}
+                            onChange={(e) => setSeniorEngineers(Number(e.target.value))}
+                            className="h-2 bg-orange-200 rounded-lg appearance-none cursor-pointer"
+                          />
+                          <input
+                            type="range"
+                            min="140"
+                            max="200"
+                            step="5"
+                            value={seniorEngineerSalary}
+                            onChange={(e) => setSeniorEngineerSalary(Number(e.target.value))}
+                            className="h-2 bg-orange-200 rounded-lg appearance-none cursor-pointer"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Mid Engineers</label>
+                          <span className="text-sm font-bold text-orange-800">{midEngineers} @ {formatCurrency(midEngineerSalary * 1000)}</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          <input
+                            type="range"
+                            min="2"
+                            max="15"
+                            step="1"
+                            value={midEngineers}
+                            onChange={(e) => setMidEngineers(Number(e.target.value))}
+                            className="h-2 bg-orange-200 rounded-lg appearance-none cursor-pointer"
+                          />
+                          <input
+                            type="range"
+                            min="110"
+                            max="160"
+                            step="5"
+                            value={midEngineerSalary}
+                            onChange={(e) => setMidEngineerSalary(Number(e.target.value))}
+                            className="h-2 bg-orange-200 rounded-lg appearance-none cursor-pointer"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Technicians</label>
+                          <span className="text-sm font-bold text-orange-800">{technicians} @ {formatCurrency(technicianSalary * 1000)}</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          <input
+                            type="range"
+                            min="2"
+                            max="12"
+                            step="1"
+                            value={technicians}
+                            onChange={(e) => setTechnicians(Number(e.target.value))}
+                            className="h-2 bg-orange-200 rounded-lg appearance-none cursor-pointer"
+                          />
+                          <input
+                            type="range"
+                            min="70"
+                            max="110"
+                            step="5"
+                            value={technicianSalary}
+                            onChange={(e) => setTechnicianSalary(Number(e.target.value))}
+                            className="h-2 bg-orange-200 rounded-lg appearance-none cursor-pointer"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Business Staff</label>
+                          <span className="text-sm font-bold text-orange-800">{businessStaff} @ {formatCurrency(businessStaffSalary * 1000)}</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          <input
+                            type="range"
+                            min="1"
+                            max="8"
+                            step="1"
+                            value={businessStaff}
+                            onChange={(e) => setBusinessStaff(Number(e.target.value))}
+                            className="h-2 bg-orange-200 rounded-lg appearance-none cursor-pointer"
+                          />
+                          <input
+                            type="range"
+                            min="95"
+                            max="160"
+                            step="5"
+                            value={businessStaffSalary}
+                            onChange={(e) => setBusinessStaffSalary(Number(e.target.value))}
+                            className="h-2 bg-orange-200 rounded-lg appearance-none cursor-pointer"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Financing & Risk */}
+                <div className="space-y-6">
+                  <div className="border-b border-gray-200 pb-4">
+                    <h3 className="text-xl font-bold text-dark-900 flex items-center">
+                      <CreditCard className="h-6 w-6 text-indigo-600 mr-3" />
+                      Financing & Risk Management
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-2">Capital structure and risk assessment</p>
+                  </div>
+
+                  {/* Financing Model */}
+                  <div className="bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition-all duration-300 border border-indigo-200 hover:shadow-lg">
+                    <h4 className="font-bold text-indigo-900 mb-4">Financing Strategy</h4>
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-semibold text-dark-700 mb-2">Financing Type</label>
+                        <select
+                          value={financingModel}
+                          onChange={(e) => setFinancingModel(e.target.value)}
+                          className="w-full p-2 border border-indigo-300 rounded bg-white text-sm hover:border-indigo-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all duration-200"
+                        >
+                          <option value="cash">All Cash</option>
+                          <option value="loan">Equipment Loan</option>
+                          <option value="equity">Equity Investment</option>
+                          <option value="mixed">Mixed (Debt + Equity)</option>
+                        </select>
+                      </div>
+
+                      {(financingModel === 'loan' || financingModel === 'mixed') && (
+                        <>
+                          <div>
+                            <div className="flex justify-between items-center mb-2">
+                              <label className="text-sm font-semibold text-dark-700">Interest Rate</label>
+                              <span className="text-sm font-bold text-indigo-800 bg-indigo-200 px-2 py-1 rounded transition-all duration-200 hover:bg-indigo-300">{formatPercentage(loanInterestRate)}</span>
+                            </div>
+                            <input
+                              type="range"
+                              min="5"
+                              max="15"
+                              step="0.25"
+                              value={loanInterestRate}
+                              onChange={(e) => setLoanInterestRate(Number(e.target.value))}
+                              className="w-full h-2 bg-indigo-200 rounded-lg appearance-none cursor-pointer text-indigo-600"
+                            />
+                          </div>
+
+                          <div>
+                            <div className="flex justify-between items-center mb-2">
+                              <label className="text-sm font-semibold text-dark-700">Loan Term</label>
+                              <span className="text-sm font-bold text-indigo-800 bg-indigo-200 px-2 py-1 rounded transition-all duration-200 hover:bg-indigo-300">{loanTermYears} years</span>
+                            </div>
+                            <input
+                              type="range"
+                              min="3"
+                              max="10"
+                              step="1"
+                              value={loanTermYears}
+                              onChange={(e) => setLoanTermYears(Number(e.target.value))}
+                              className="w-full h-2 bg-indigo-200 rounded-lg appearance-none cursor-pointer text-indigo-600"
+                            />
+                          </div>
+                        </>
+                      )}
+
+                      {financingModel === 'mixed' && (
+                        <div>
+                          <div className="flex justify-between items-center mb-2">
+                            <label className="text-sm font-semibold text-dark-700">Equity Percentage</label>
+                            <span className="text-sm font-bold text-indigo-800 bg-indigo-200 px-2 py-1 rounded transition-all duration-200 hover:bg-indigo-300">{formatPercentage(equityPercentage)}</span>
+                          </div>
+                          <input
+                            type="range"
+                            min="20"
+                            max="80"
+                            step="5"
+                            value={equityPercentage}
+                            onChange={(e) => setEquityPercentage(Number(e.target.value))}
+                            className="w-full h-2 bg-indigo-200 rounded-lg appearance-none cursor-pointer text-indigo-600"
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Risk Assessment */}
+                  <div className="bg-red-50 p-4 rounded-lg hover:bg-red-100 transition-all duration-300 border border-red-200 hover:shadow-lg">
+                    <h4 className="font-bold text-red-900 mb-4">Risk Assessment</h4>
+                    <div className="space-y-4">
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Market Risk</label>
+                          <span className="text-sm font-bold text-red-800 bg-red-200 px-2 py-1 rounded transition-all duration-200 hover:bg-red-300">{formatPercentage(marketRisk)}</span>
+                        </div>
                         <input
                           type="range"
                           min="5"
-                          max="15"
-                          step="0.25"
-                          value={loanInterestRate}
-                          onChange={(e) => setLoanInterestRate(Number(e.target.value))}
-                          className="w-full slider"
+                          max="30"
+                          step="1"
+                          value={marketRisk}
+                          onChange={(e) => setMarketRisk(Number(e.target.value))}
+                          className="w-full h-2 bg-red-200 rounded-lg appearance-none cursor-pointer text-red-600"
                         />
+                        <p className="text-xs text-red-700 mt-1">Defense budget cuts, program cancellations</p>
                       </div>
 
                       <div>
-                        <label className="block text-sm font-semibold text-dark-700 mb-2">
-                          Loan Term: {loanTermYears} years
-                        </label>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Competition Risk</label>
+                          <span className="text-sm font-bold text-red-800 bg-red-200 px-2 py-1 rounded transition-all duration-200 hover:bg-red-300">{formatPercentage(competitionRisk)}</span>
+                        </div>
                         <input
                           type="range"
-                          min="3"
-                          max="10"
+                          min="5"
+                          max="25"
                           step="1"
-                          value={loanTermYears}
-                          onChange={(e) => setLoanTermYears(Number(e.target.value))}
-                          className="w-full slider"
+                          value={competitionRisk}
+                          onChange={(e) => setCompetitionRisk(Number(e.target.value))}
+                          className="w-full h-2 bg-red-200 rounded-lg appearance-none cursor-pointer text-red-600"
                         />
+                        <p className="text-xs text-red-700 mt-1">New market entrants, pricing pressure</p>
                       </div>
-                    </>
-                  )}
 
-                  {financingModel === 'mixed' && (
-                    <div>
-                      <label className="block text-sm font-semibold text-dark-700 mb-2">
-                        Equity Percentage: {formatPercentage(equityPercentage)}
-                      </label>
-                      <input
-                        type="range"
-                        min="20"
-                        max="80"
-                        step="5"
-                        value={equityPercentage}
-                        onChange={(e) => setEquityPercentage(Number(e.target.value))}
-                        className="w-full slider"
-                      />
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-sm font-semibold text-dark-700">Operational Risk</label>
+                          <span className="text-sm font-bold text-red-800 bg-red-200 px-2 py-1 rounded transition-all duration-200 hover:bg-red-300">{formatPercentage(operationalRisk)}</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="5"
+                          max="25"
+                          step="1"
+                          value={operationalRisk}
+                          onChange={(e) => setOperationalRisk(Number(e.target.value))}
+                          className="w-full h-2 bg-red-200 rounded-lg appearance-none cursor-pointer text-red-600"
+                        />
+                        <p className="text-xs text-red-700 mt-1">Key personnel, technology obsolescence</p>
+                      </div>
+
+                      <div className="border-t pt-3 mt-3 bg-red-100 -mx-4 -mb-4 px-4 pb-4 rounded-b-lg">
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm font-bold text-red-900">Total Risk Discount</span>
+                          <span className="text-lg font-bold text-red-900 bg-red-300 px-3 py-1 rounded">{formatPercentage(marketRisk + competitionRisk + operationalRisk)}</span>
+                        </div>
+                        <p className="text-xs text-red-700 mt-1">Applied to revenue projections for conservative planning</p>
+                      </div>
                     </div>
-                  )}
-                </div>
-              </div>
+                  </div>
 
-              {/* Risk Assessment */}
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-lg font-bold text-dark-900 mb-4 flex items-center">
-                  <AlertCircle className="h-5 w-5 text-red-600 mr-2" />
-                  Risk Factors
-                </h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <div className="font-semibold text-red-800">Market Risk: {formatPercentage(marketRisk)}</div>
-                    <div className="text-sm text-red-700 mb-2">15% total risk</div>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-red-800">Competition Risk: {formatPercentage(competitionRisk)}</div>
-                    <div className="text-sm text-red-700 mb-2">10% total risk</div>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-red-800">Operational Risk: {formatPercentage(operationalRisk)}</div>
-                    <div className="text-sm text-red-700 mb-2">12% total risk</div>
+                  {/* Software Costs */}
+                  <div className="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition-all duration-300 border border-gray-200 hover:shadow-lg">
+                    <h4 className="font-bold text-gray-900 mb-3">Annual Software Costs</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span>ABAQUS ({abaqusSeats} seats)</span>
+                        <span className="font-semibold bg-gray-200 px-2 py-1 rounded text-xs transition-all duration-200 hover:bg-gray-300">{formatCurrency(abaqusSeats * abaqusCostPerSeat * 1000)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>MATLAB ({matlabSeats} seats)</span>
+                        <span className="font-semibold bg-gray-200 px-2 py-1 rounded text-xs transition-all duration-200 hover:bg-gray-300">{formatCurrency(matlabSeats * matlabCostPerSeat * 1000)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>CAD Software ({cadSeats} seats)</span>
+                        <span className="font-semibold bg-gray-200 px-2 py-1 rounded text-xs transition-all duration-200 hover:bg-gray-300">{formatCurrency(cadSeats * cadCostPerSeat * 1000)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Cloud Computing</span>
+                        <span className="font-semibold bg-gray-200 px-2 py-1 rounded text-xs transition-all duration-200 hover:bg-gray-300">{formatCurrency(cloudCompute * 1000)}</span>
+                      </div>
+                      <div className="border-t pt-2 flex justify-between font-bold">
+                        <span>Total Software</span>
+                        <span className="bg-gray-300 px-2 py-1 rounded text-gray-900">{formatCurrency(projections.annualSoftwareCosts)}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
