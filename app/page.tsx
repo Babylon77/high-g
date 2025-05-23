@@ -17,6 +17,7 @@ export default function HomePage() {
               <a href="#about" className="text-dark-600 hover:text-primary-600 font-medium">About</a>
               <a href="#philosophy" className="text-dark-600 hover:text-primary-600 font-medium">Philosophy</a>
               <a href="#approach" className="text-dark-600 hover:text-primary-600 font-medium">Approach</a>
+              <Link href="/facility" className="text-dark-600 hover:text-primary-600 font-medium">Facility</Link>
               <Link href="/business-plan" className="text-dark-600 hover:text-primary-600 font-medium">Business Plan</Link>
               <a href="#contact" className="text-dark-600 hover:text-primary-600 font-medium">Contact</a>
             </div>
@@ -29,21 +30,21 @@ export default function HomePage() {
         <div className="container-max section-padding">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Beyond MBSE & SysML:
-              <span className="block text-blue-200">Real Digital Engineering for Defense</span>
+              Physics-Centric Digital Engineering
+              <span className="block text-blue-200">for Defense & Ballistic Systems</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100">
-              We focus on quantitative analysis, proven engineering methods, and physics-based models 
-              that actually improve decisions – not just create more diagrams.
+              We deliver quantitative analysis through proven engineering methods, AI-enhanced workflows, 
+              and authoritative physics-based models that drive better decisions and superior system performance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/business-plan" className="btn-secondary">
                 <BarChart3 className="mr-2 h-5 w-5" />
                 Interactive Business Plan
               </Link>
-              <button className="btn-primary">
-                Contact Us
-              </button>
+              <Link href="/facility" className="btn-primary">
+                Explore Our Facility
+              </Link>
             </div>
           </div>
         </div>
@@ -63,27 +64,28 @@ export default function HomePage() {
             <div>
               <h3 className="text-2xl font-bold text-dark-900 mb-6">About High G Solutions</h3>
               <p className="text-dark-600 text-lg mb-6">
-                Founded by Jason Foultz, High G Solutions cuts through the Digital Engineering hype to deliver 
-                what actually matters: <strong>quantitative analysis that enables better engineering decisions</strong>. 
-                We leverage proven methods like DOE, MODA, Monte Carlo simulation, and physics-based M&S.
+                Founded by Jason Foultz, High G Solutions specializes in <strong>physics-centric digital engineering</strong> 
+                that delivers measurable results. We leverage proven quantitative methods including Design of Experiments (DOE), 
+                Multi-Objective Decision Analysis (MODA), Failure Mode Effects Analysis (FMEA), Monte Carlo simulation, 
+                and physics-based modeling & simulation.
               </p>
               <p className="text-dark-600 text-lg mb-6">
-                While others focus on SysML diagrams and modeling formalism, we prioritize <strong>systems thinking, 
-                knowledge acquisition, and authoritative physics-based models</strong> that reduce risk and optimize 
-                performance in precision fires and ballistic systems.
+                Our approach centers on <strong>authoritative physics-based models and AI-enhanced workflows</strong> 
+                that enable superior decision-making in precision fires and ballistic systems. We use artificial intelligence 
+                to accelerate analysis, evaluate complex data, and create efficient engineering workflows.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center text-dark-600">
                   <CheckCircle className="h-5 w-5 text-primary-600 mr-3" />
-                  Analysis & insight over diagram complexity
+                  Physics-centric models grounded in deep understanding
                 </li>
                 <li className="flex items-center text-dark-600">
                   <CheckCircle className="h-5 w-5 text-primary-600 mr-3" />
-                  Proven quantitative methods (Six Sigma, DOE, FMEA)
+                  AI-enhanced analysis and workflow automation
                 </li>
                 <li className="flex items-center text-dark-600">
                   <CheckCircle className="h-5 w-5 text-primary-600 mr-3" />
-                  Physics-based models grounded in deep understanding
+                  Proven quantitative methods (DOE, MODA, FMEA, Monte Carlo)
                 </li>
               </ul>
             </div>
@@ -113,12 +115,12 @@ export default function HomePage() {
         <div className="container-max section-padding">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-dark-900 mb-4">
-              Our Digital Engineering Philosophy
+              Our Physics-Centric Approach
             </h2>
             <div className="w-24 h-1 bg-primary-600 mx-auto mb-8"></div>
             <p className="text-xl text-dark-600 max-w-4xl mx-auto">
-              We believe Digital Engineering should enable <strong>better decisions, faster and cheaper</strong> – 
-              not just create more interconnected diagrams. Here's how we're different:
+              We deliver <strong>better engineering decisions through physics-based understanding</strong>, 
+              AI-enhanced analysis, and proven quantitative methods that drive measurable improvements.
             </p>
           </div>
 
@@ -127,10 +129,10 @@ export default function HomePage() {
               <div className="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Brain className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-dark-900 mb-4">Systems Thinking First</h3>
+              <h3 className="text-xl font-bold text-dark-900 mb-4">Physics-Centric Models</h3>
               <p className="text-dark-600">
-                Foundation in systems thinking and human insight, not tools and processes. 
-                We prioritize the "explanatory effect" – engineers understanding the <em>why</em> behind results.
+                Authoritative models grounded in deep understanding of ballistic phenomena, material properties, 
+                and high-G environments. Every model maintains the "explanatory effect" – engineers understand the physics.
               </p>
             </div>
 
@@ -138,10 +140,10 @@ export default function HomePage() {
               <div className="bg-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Calculator className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-dark-900 mb-4">Proven Methods Over Formalism</h3>
+              <h3 className="text-xl font-bold text-dark-900 mb-4">AI-Enhanced Analysis</h3>
               <p className="text-dark-600">
-                Six Sigma, DOE, FMEA, MODA, Monte Carlo simulation, and physics-based M&S. 
-                These time-tested methods actually reduce risk and optimize designs.
+                Artificial intelligence accelerates Design of Experiments (DOE), Multi-Objective Decision Analysis (MODA), 
+                video evaluation, and workflow automation while preserving human insight and engineering judgment.
               </p>
             </div>
 
@@ -149,40 +151,34 @@ export default function HomePage() {
               <div className="bg-purple-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <FlaskConical className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-dark-900 mb-4">Knowledge Acquisition Focus</h3>
+              <h3 className="text-xl font-bold text-dark-900 mb-4">Proven Methodologies</h3>
               <p className="text-dark-600">
-                The real bottleneck isn't modeling languages – it's fundamental knowledge gaps. 
-                We prioritize R&D and testing to build authoritative physics-based models.
+                Six Sigma, Design of Experiments (DOE), Failure Mode Effects Analysis (FMEA), 
+                Monte Carlo simulation, and Computational Fluid Dynamics (CFD) – methods that consistently deliver results.
               </p>
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-red-50 to-orange-50 p-8 rounded-lg border-l-4 border-orange-500">
-            <h3 className="text-2xl font-bold text-dark-900 mb-4">What We Don't Do (And Why)</h3>
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-lg border-l-4 border-blue-500">
+            <h3 className="text-2xl font-bold text-dark-900 mb-4">Our AI-Forward Engineering Philosophy</h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-bold text-red-800 mb-2">❌ Model-Centric Approach</h4>
-                <p className="text-dark-600 text-sm mb-4">
-                  We don't make the model the product. Complex SysML diagrams often hinder iteration 
-                  and exploration rather than enabling better understanding.
-                </p>
-                <h4 className="font-bold text-red-800 mb-2">❌ Domain-Ignorant Modeling</h4>
-                <p className="text-dark-600 text-sm">
-                  We don't task generalists with creating detailed models of specialized domains, 
-                  avoiding technically naive diagrams that waste expert time.
-                </p>
+                <h4 className="font-bold text-blue-800 mb-2">🤖 AI as Engineering Accelerator</h4>
+                <ul className="text-dark-600 text-sm space-y-1">
+                  <li>• AI-powered code generation for analysis workflows</li>
+                  <li>• Computer vision for high-speed camera evaluation</li>
+                  <li>• Machine learning for pattern recognition in test data</li>
+                  <li>• Automated documentation and report generation</li>
+                </ul>
               </div>
               <div>
-                <h4 className="font-bold text-red-800 mb-2">❌ Communication Breakdown</h4>
-                <p className="text-dark-600 text-sm mb-4">
-                  We don't replace clear technical documentation with complex diagrams that prioritize 
-                  modeling rigor over clarity and shared understanding.
-                </p>
-                <h4 className="font-bold text-red-800 mb-2">❌ Digital Theater</h4>
-                <p className="text-dark-600 text-sm">
-                  We don't create elaborate documentation exercises that add bureaucratic layers 
-                  without improving decision quality or system performance.
-                </p>
+                <h4 className="font-bold text-blue-800 mb-2">🔬 Physics-Based Foundation</h4>
+                <ul className="text-dark-600 text-sm space-y-1">
+                  <li>• Models that explain cause-and-effect relationships</li>
+                  <li>• Uncertainty quantification and risk assessment</li>
+                  <li>• Validated against experimental data and observations</li>
+                  <li>• Enable trade studies and design optimization</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -418,12 +414,12 @@ export default function HomePage() {
         <div className="container-max section-padding">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Why We're Different from Other DE Consultants
+              Our Competitive Advantage
             </h2>
             <div className="w-24 h-1 bg-white mx-auto mb-8"></div>
             <p className="text-xl text-blue-100 max-w-4xl mx-auto">
-              While others chase MBSE/SysML trends, we focus on what actually works: 
-              proven quantitative methods that improve decision quality and system performance.
+              Physics-centric models, AI-enhanced analysis, and proven quantitative methods 
+              that consistently deliver superior decision quality and system performance.
             </p>
           </div>
 
@@ -432,10 +428,10 @@ export default function HomePage() {
               <div className="bg-primary-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Calculator className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Analysis Over Formalism</h3>
+              <h3 className="text-xl font-bold mb-3">Quantitative Excellence</h3>
               <p className="text-blue-100">
-                We prioritize rigorous quantitative analysis (DOE, MODA, Monte Carlo) over 
-                complex modeling languages that obscure rather than illuminate.
+                Design of Experiments (DOE), Multi-Objective Decision Analysis (MODA), 
+                and Monte Carlo simulation expertise that drives measurable improvements.
               </p>
             </div>
 
@@ -443,10 +439,10 @@ export default function HomePage() {
               <div className="bg-primary-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Brain className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Human Insight Central</h3>
+              <h3 className="text-xl font-bold mb-3">AI-Enhanced Engineering</h3>
               <p className="text-blue-100">
-                We maintain the "explanatory effect" – ensuring engineers understand the physics 
-                and reasoning behind results, not just black-box outputs.
+                Artificial intelligence accelerates our analysis workflows while preserving 
+                the crucial "explanatory effect" that enables deep understanding.
               </p>
             </div>
 
@@ -454,10 +450,10 @@ export default function HomePage() {
               <div className="bg-primary-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <FlaskConical className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Physics-Based Foundation</h3>
+              <h3 className="text-xl font-bold mb-3">Physics-Based Authority</h3>
               <p className="text-blue-100">
-                Our models are grounded in deep understanding of ballistic phenomena, 
-                high-G environments, and weapon system physics – not just structural relationships.
+                Our models reveal cause-and-effect relationships in ballistic phenomena, 
+                high-G environments, and weapon system interactions through deep understanding.
               </p>
             </div>
 
@@ -465,21 +461,21 @@ export default function HomePage() {
               <div className="bg-primary-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Target className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Measurable Outcomes</h3>
+              <h3 className="text-xl font-bold mb-3">Hybrid Innovation</h3>
               <p className="text-blue-100">
-                We judge success by decision quality, cycle time reduction, and system performance 
-                improvements – not model complexity or diagram count.
+                Seamless integration of physical R&D capabilities with virtual collaboration, 
+                enabling global access to cutting-edge engineering tools.
               </p>
             </div>
           </div>
 
           <div className="mt-16 text-center">
             <div className="bg-primary-800/50 p-8 rounded-lg max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold mb-4">The Bottom Line</h3>
+              <h3 className="text-2xl font-bold mb-4">Measurable Results</h3>
               <p className="text-xl text-blue-100">
-                We ask the hard question: <strong>Has your Digital Engineering initiative actually improved 
-                your ability to innovate, produce, and field superior systems faster and cheaper?</strong> 
-                If not, you need a different approach.
+                We deliver <strong>better engineering decisions through physics-based understanding</strong>, 
+                AI-enhanced analysis, and proven methodologies that consistently reduce risk, 
+                optimize performance, and accelerate innovation.
               </p>
             </div>
           </div>
@@ -491,13 +487,13 @@ export default function HomePage() {
         <div className="container-max section-padding">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Knowledge-Driven Prototype Facility
+              Advanced R&D Facility
             </h2>
             <div className="w-24 h-1 bg-cyan-400 mx-auto mb-8"></div>
             <p className="text-xl text-slate-300 max-w-4xl mx-auto">
-              Our R&D laboratory embodies our philosophy: build <strong>authoritative physics-based models</strong> 
+              Our cutting-edge laboratory embodies our philosophy: build <strong>authoritative physics-based models</strong> 
               through deep understanding of ballistic phenomena, high-G environments, and material behavior. 
-              Real knowledge acquisition, not just digital documentation.
+              Enhanced by AI tools for accelerated analysis and insight generation.
             </p>
           </div>
           
@@ -508,10 +504,10 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-cyan-300">Knowledge-Based Manufacturing</h3>
+              <h3 className="text-2xl font-bold mb-4 text-cyan-300">Precision Manufacturing</h3>
               <p className="text-slate-300">
-                5-axis CNC and metal 3D printing informed by deep understanding of material properties, 
-                thermal stress, and manufacturing variability – not just process documentation.
+                5-axis CNC machining and metal additive manufacturing informed by physics-based understanding of 
+                material properties, thermal stress, and manufacturing variability for complex ballistic components.
               </p>
             </div>
 
@@ -521,10 +517,10 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-orange-300">Physics-Based Testing</h3>
+              <h3 className="text-2xl font-bold mb-4 text-orange-300">AI-Enhanced Testing</h3>
               <p className="text-slate-300">
-                High-speed cameras and instrumented ranges that generate data for authoritative ballistic models. 
-                Understanding <em>why</em> projectiles behave as they do, not just documenting that they do.
+                High-speed cameras with AI-powered video analysis, instrumented test ranges with machine learning 
+                pattern recognition, and automated data processing for ballistic characterization.
               </p>
             </div>
 
@@ -534,42 +530,42 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-purple-300">Explanatory Simulation</h3>
+              <h3 className="text-2xl font-bold mb-4 text-purple-300">Physics-Based Simulation</h3>
               <p className="text-slate-300">
-                GPU clusters for CFD and FEA that maintain the "explanatory effect" – engineers understand 
-                the physics, not just the outputs. Hard-to-vary models that account for observed phenomena.
+                GPU clusters for Computational Fluid Dynamics (CFD) and Finite Element Analysis (FEA) that maintain 
+                the "explanatory effect" – engineers understand the physics behind every simulation result.
               </p>
             </div>
           </div>
 
           <div className="bg-slate-800/30 p-8 rounded-lg border border-slate-600 mb-8">
-            <h3 className="text-2xl font-bold text-cyan-300 mb-4 text-center">The Knowledge Acquisition Difference</h3>
+            <h3 className="text-2xl font-bold text-cyan-300 mb-4 text-center">Hybrid Physical & Virtual Environments</h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h4 className="font-bold text-white mb-3">🔬 What We Build</h4>
+                <h4 className="font-bold text-white mb-3">🏭 Physical Facility</h4>
                 <ul className="text-slate-300 space-y-2 text-sm">
-                  <li>• Deep understanding of material behavior under extreme conditions</li>
-                  <li>• Authoritative databases of validated ballistic phenomena</li>
-                  <li>• Physics-based models that reveal cause-and-effect relationships</li>
-                  <li>• Quantitative frameworks for uncertainty management</li>
+                  <li>• War rooms for collaborative simulations and team-centered analysis</li>
+                  <li>• Large displays for integrated model visualization and trade studies</li>
+                  <li>• Instrumentation labs with strain gauges, pressure sensors, thermal cameras</li>
+                  <li>• AI workstations for real-time video and data analysis</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-bold text-white mb-3">📊 How We Apply It</h4>
+                <h4 className="font-bold text-white mb-3">🌐 Virtual Facility (Digital Twin)</h4>
                 <ul className="text-slate-300 space-y-2 text-sm">
-                  <li>• DOE and MODA for systematic design optimization</li>
-                  <li>• Monte Carlo simulation for robust risk assessment</li>
-                  <li>• FMEA grounded in actual failure mechanisms</li>
-                  <li>• Clear technical documentation over complex diagrams</li>
+                  <li>• Complete digital twin enabling remote collaboration worldwide</li>
+                  <li>• Virtual reality interfaces for immersive design reviews</li>
+                  <li>• Cloud-based physics simulations accessible anywhere</li>
+                  <li>• AI-powered workflow automation and analysis tools</li>
                 </ul>
               </div>
             </div>
           </div>
 
           <div className="text-center">
-            <Link href="/business-plan" className="inline-flex items-center bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl">
+            <Link href="/facility" className="inline-flex items-center bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl">
               <BarChart3 className="mr-3 h-6 w-6" />
-              Model Our Knowledge-Driven Approach
+              Explore Our Complete Facility
               <ArrowRight className="ml-3 h-6 w-6" />
             </Link>
           </div>

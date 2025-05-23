@@ -113,7 +113,8 @@ export default function BusinessPlanPage() {
             <div className="hidden md:flex space-x-8">
               <Link href="/" className="text-dark-600 hover:text-primary-600 font-medium">Home</Link>
               <Link href="/#about" className="text-dark-600 hover:text-primary-600 font-medium">About</Link>
-              <Link href="/#services" className="text-dark-600 hover:text-primary-600 font-medium">Services</Link>
+              <Link href="/#philosophy" className="text-dark-600 hover:text-primary-600 font-medium">Philosophy</Link>
+              <Link href="/facility" className="text-dark-600 hover:text-primary-600 font-medium">Facility</Link>
               <Link href="/business-plan" className="text-primary-600 font-medium">Business Plan</Link>
               <Link href="/#contact" className="text-dark-600 hover:text-primary-600 font-medium">Contact</Link>
             </div>
@@ -133,9 +134,9 @@ export default function BusinessPlanPage() {
               Interactive Business Plan
             </h1>
             <p className="text-xl text-blue-100 mb-8">
-              Model our approach that prioritizes <strong>quantitative analysis and proven engineering methods</strong> over 
-              MBSE formalism. Explore scenarios including our cutting-edge prototype facility focused on physics-based 
-              understanding of ballistic systems and high-G environments.
+              Model our physics-centric approach that leverages <strong>proven quantitative methods and AI-enhanced workflows</strong> 
+              including Design of Experiments (DOE), Multi-Objective Decision Analysis (MODA), and Failure Mode Effects Analysis (FMEA). 
+              Explore scenarios including our cutting-edge prototype facility focused on authoritative physics-based understanding.
             </p>
           </div>
         </div>
